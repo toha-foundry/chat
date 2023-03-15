@@ -4,7 +4,7 @@ import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { VectorDBQAChain } from 'langchain/chains';
 import { openai } from '@/utils/openai-client';
 
-const query = 'How do i create a notion database?';
+const query = 'Waht was the impact of Woody debris emanating from Uawa Forest?';
 
 const model = openai;
 
@@ -15,9 +15,9 @@ async function searchForDocs() {
   );
 
   /*uncomment below to test similarity search */
-  //   const results = await vectorStore.similaritySearch(query, 2);
+    const results = await vectorStore.similaritySearch(query, 20);
 
-  //   console.log("results", results);
+    console.log("results", results);
 
   const chain = VectorDBQAChain.fromLLM(model, vectorStore);
 
